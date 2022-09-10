@@ -1,26 +1,34 @@
-
 #include <stdio.h>
-
 /**
- *   * main - Prints a hexadecimal string
- *     *
- *       * Return: Always (Success)
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ * date:05-06-2022
  */
 int main(void)
-{	
-	char c;
+{
+	int i, j, k;
 
-	for (c = '0'; c <= '9'; c++)
+	for (i = 48; i < 58; i++)
 	{
-		putchar(c);
+		for (j = 49; j < 58; j++)
+		{
+			for (k = 50; k < 58; k++)
+			{
+				if (k > j && j > i)
+				{
+					putchar(i);
+					putchar(j);
+					putchar(k);
+					if (i != 55 || j != 56)
+					{
+						putchar(',');
+						putchar(' ');
+					}
+				}
+			}
+		}
 	}
-
-	for (c = 'a'; c <= 'f'; c++)
-	{
-		putchar(c);
-	}
-
-	putchar('\n')
-
+	putchar('\n');
 	return (0);
 }
