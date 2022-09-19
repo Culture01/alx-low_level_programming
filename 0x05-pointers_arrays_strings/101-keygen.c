@@ -1,27 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "main.h"
 
 /**
- *  * main - generate password
- *   *
- *    * Return: Always 0
+ *  * _atoi - convert string to int
+ *   * @s: string
+ *    * Return: int
  */
-int main(void)
+int _atoi(char *s)
 {
-	int r = 0;
-	int s = 0;
-	time_t t;
+	unsigned int count = 0, size = 0, oi = 0, pt = 1, m = 1, i;
 
-	srand((unsigned int) time(&t));
-	while (s < 2772)
+	while (*(s + count) != '\0')
 	{
-		r = rand() % 128;
-		if ((s + r) > 2772)
+		if (size > 0 && (*(s + count) < '0' || *(s + count) > '9'))
 			break;
-		s = s + r;
-		printf("%c", r);
+
+		if (*(s + count) == '-')
+			pt *= -1;
+
+		if ((*(s + count) >= '0') && (*(s + count) <= '9'))
+		{
+			if (size > 0)
+				m *= 10;
+			size++;
+		}
+		count++;
 	}
-	printf("%c\n", (2772 - s));
-	return (0);
+
+	for (i = count - size; i < count; i++)
+	{
+		oi = oi + ((*(s + i) - 48) * m);
+		m /= 10;
+	}
+	return (oi * pt);
 }
