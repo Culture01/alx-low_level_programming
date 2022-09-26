@@ -1,20 +1,23 @@
-#include <stdio.h>
+#include "main.h"
+#define NULL 0
 
 /**
- * _strchr - multiplies two digits
- * @s: 1st digit in the multiplication
- * @c: 2nd digit to be multiplied
- * Description: multiplies two digits
- * Return: the result of the multiplication
- */
+* _strchr - locate 1st occurrence of char in string and returns pointer there
+* @s: string to search
+* @c: target characer
+* Return: pointer to that character in string
+*/
+
 char *_strchr(char *s, char c)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		if (s[i] == c)
-			return (&s[i]);
-	}
-	return (NULL);
+	while (s[i] != '\0' && s[i] != c)
+		i++;
+
+	if (s[i] == c)
+		return (&s[i]);
+
+	else
+		return (NULL);
 }
